@@ -2,6 +2,7 @@ from flask import Flask,request,render_template
 import google.generativeai as palm
 import replicate
 import os
+import time
 
 os.environ["REPLICATE_API_TOKEN"] = "r8_PgWv9pc0H0ITuiG96E5M6E8jWuFz4Zy1aZqMA"
 palm.configure(api_key="AIzaSyCCT1K99BJ1JbLwhCE7qOcQ5KOZcPJ9ZZ4")
@@ -65,6 +66,7 @@ def music_generator():
             "duration" : 5
         }
     )
+    time.sleep(100)
     return(render_template("music_generator.html",r=r)) 
 
 @app.route("/video",methods=["GET","POST"])
